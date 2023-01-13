@@ -2,14 +2,11 @@ class Solution:
   def maxProfit(self, prices: list[int]) -> int:
     min_price = prices[0]
     max_profit = 0
-    
-    if (prices == sorted(prices, reverse=True)):
-      return max_profit
 
     for price in prices[1:]:
       if price < min_price:
         min_price = price
-      if price - min_price > max_profit:
+      elif price - min_price > max_profit:
         max_profit = price - min_price 
 
     return max_profit
