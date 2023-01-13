@@ -1,25 +1,25 @@
 class Solution:
-  def max_profit(self, prices: list[int]) -> int:
-    current_max_profit = 0
-    for day, price in enumerate(prices):
-      if price > current_max_profit:
-        fwd_day_prices = prices[day + 1:]
+  def maxProfit(self, prices: list[int]) -> int:
+    min_price = prices[0]
+    max_profit = 0
+    
+    if (prices == sorted(prices, reverse=True)):
+      return max_profit
 
-        if len(fwd_day_prices):
-          max_day_profit = max(fwd_day_prices) - price
+    for price in prices[1:]:
+      if price < min_price:
+        min_price = price
+      if price - min_price > max_profit:
+        max_profit = price - min_price 
 
-          if max_day_profit > current_max_profit:
-            current_max_profit = max_day_profit
-
-    return current_max_profit
-
+    return max_profit
 
 
 if __name__ == '__main__':
   solution = Solution()
 
   print('Case 1: prices = [7  1, 5, 3, 6, 4]')
-  print('Answer:', solution.max_profit([7, 1, 5, 3, 6, 4]))
+  print('Answer:', solution.maxProfit([7, 1, 5, 3, 6, 4]))
 
   print('\nCase 2: prices = [7, 6, 4, 3, 1]')
-  print('Answer:', solution.max_profit([7, 6, 4, 3, 1]))
+  print('Answer:', solution.maxProfit([7, 6, 4, 3, 1]))
