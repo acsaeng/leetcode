@@ -1,6 +1,14 @@
 class Solution:
   def containsDuplicate(self, nums: list[int]) -> bool:
-    return not(sorted(nums) == sorted(list(set(nums))))
+    nums_history = set()
+
+    for num in nums:
+      if num in nums_history:
+        return True
+      else:
+        nums_history.add(num)
+    
+    return False
 
 
 if __name__ == '__main__':
