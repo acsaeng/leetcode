@@ -20,14 +20,13 @@ class Solution:
     return len(longest_substring)
       
 
-if __name__ == '__main__':
-  solution = Solution()
+solution = Solution()
 
-  print('Case 1: s = "abcabcbb"')
-  print('Answer:', solution.lengthOfLongestSubstring('abcabcbb'))
+print('Case 1: s = "abcabcbb"')
+print('Answer:', solution.lengthOfLongestSubstring('abcabcbb'))
 
-  print('\nCase 2: s = "bbbbb"')
-  print('Answer:', solution.lengthOfLongestSubstring('bbbbb'))
+print('\nCase 2: s = "bbbbb"')
+print('Answer:', solution.lengthOfLongestSubstring('bbbbb'))
 
-  print('\nCase 3: s = "pwwkew"')
-  print('Answer:', solution.lengthOfLongestSubstring('pwwkew'))
+print('\nCase 3: s = "pwwkew"')
+print('Answer:', solution.lengthOfLongestSubstring('pwwkew'))

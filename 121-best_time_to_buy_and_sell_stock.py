@@ -12,11 +12,10 @@ class Solution:
     return max_profit
 
 
-if __name__ == '__main__':
-  solution = Solution()
+solution = Solution()
 
-  print('Case 1: prices = [7  1, 5, 3, 6, 4]')
-  print('Answer:', solution.maxProfit([7, 1, 5, 3, 6, 4]))
+print('Case 1: prices = [7  1, 5, 3, 6, 4]')
+print('Answer:', solution.maxProfit([7, 1, 5, 3, 6, 4]))
 
-  print('\nCase 2: prices = [7, 6, 4, 3, 1]')
-  print('Answer:', solution.maxProfit([7, 6, 4, 3, 1]))
+print('\nCase 2: prices = [7, 6, 4, 3, 1]')
+print('Answer:', solution.maxProfit([7, 6, 4, 3, 1]))
