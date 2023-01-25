@@ -1,16 +1,20 @@
-import copy
+import itertools
 
 class Solution:
   def rotate(self, matrix: list[list[int]]) -> None:
     """
     Do not return anything, modify matrix in-place instead.
     """
-    matrix_copy = copy.deepcopy(matrix)
+    # Transpose the matrix
+    for i in range(len(matrix)):
+      for j in range(len(matrix[i])):
+        if i < j:
+          matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
-    for i, row in enumerate(matrix_copy):
-      for j, num in enumerate(row):
-        print('copy', matrix_copy)
-        matrix[j][len(matrix_copy) - 1 - i] = num
+    # Reflect the matrix along the vertical
+    for i in range(len(matrix)):
+      for j in range(len(matrix[i]) // 2):
+        matrix[i][j], matrix[i][len(matrix[i]) - 1 - j] = matrix[i][len(matrix[i]) - 1 - j], matrix[i][j]
 
 
 solution = Solution()
