@@ -9,40 +9,27 @@ class ListNode:
 
 class Solution:
   def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-    if not head:
-      return
-    elif not head.next:
-      return head
-    
+    previous_node = None
     current_node = head
-    next_node = current_node.next
-    next_next_node = next_node.next
 
-    current_node.next = None
-
-    while next_node:
-      next_node.next = current_node
-
+    while current_node:
+      next_node = current_node.next
+      current_node.next = previous_node
+      previous_node = current_node
       current_node = next_node
-      next_node = next_next_node
 
-      if next_node:
-        next_next_node = next_node.next
-    
-    return current_node
+    return previous_node
 
 
 def create_linked_list(array):
-  if not array:
-    return
+  if array:
+    cursor = first_node = ListNode(array[0], next=None)
 
-  cursor = first_node = ListNode(array[0], next=None)
+    for i in range(1, len(array)):
+      cursor.next = ListNode(array[i], next=cursor if i != len(array) - 1 else None)
+      cursor = cursor.next
 
-  for i in range(1, len(array)):
-    cursor.next = ListNode(array[i], next=cursor if i != len(array) - 1 else None)
-    cursor = cursor.next
-
-  return first_node
+    return first_node
 
 
 def print_linked_list(head):
