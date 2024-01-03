@@ -11,7 +11,7 @@ class Solution:
         else:
           return False
     
-    return not len(sequence)
+    return not sequence
 
 
 solution = Solution()
