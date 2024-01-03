@@ -3,14 +3,14 @@ class Solution:
     map = {}
 
     for index, num in enumerate(nums):
-      second_num = target - num
+      diff = target - num
       
-      if second_num in map.values():
-        return [list(map.keys())[list(map.values()).index(second_num)], index]
+      if diff in map:
+        return [map[diff], index]
       else:
-        map[index] = num
+        map[num] = index
     
-    return None
+    return
 
 
 solution = Solution()
