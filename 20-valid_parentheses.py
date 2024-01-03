@@ -1,17 +1,21 @@
 class Solution:
   def isValid(self, s: str) -> bool:
-    sequence = ''
+    if len(s) % 2:
+      return False
+
+    stack = []
+    parentheses_map = {')': '(', '}': '{', ']': '['}
 
     for char in s:
-      sequence += char
-
-      if char in [')', '}', ']']:
-        if sequence[-2:] in ['()', '{}', '[]']:
-          sequence = sequence[:-2]
+      if char in parentheses_map:
+        if stack and stack[-1] == parentheses_map[char]:
+          stack.pop()
         else:
           return False
-    
-    return not sequence
+      else:
+        stack.append(char)
+
+    return not stack
 
 
 solution = Solution()
