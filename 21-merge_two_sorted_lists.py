@@ -3,34 +3,25 @@ from utils.linked_list import ListNode, create_linked_list, print_linked_list
 
 class Solution:
   def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-    if not list1 or not list2:
-      return list1 or list2 or None
-    
-    if list1.val <= list2.val:
-      head = current_node = list1
-      other_node = list2
-    else:
-      head = current_node = list2
-      other_node = list1
+    dummy_list = current_node = ListNode()
 
-    while current_node.next or other_node:
-      if not current_node.next:
-        current_node.next = other_node
-        break
-      elif not other_node:
-        break
-      elif current_node.next.val > other_node.val:
-        next_node = other_node
-        other_node = current_node.next
-        current_node.next = next_node
+    while list1 and list2:
+      if list1.val <= list2.val:
+        current_node.next = list1
+        list1 = list1.next
+      else:
+        current_node.next = list2
+        list2 = list2.next
       
       current_node = current_node.next
+    
+    if list1:
+      current_node.next = list1
+    elif list2:
+      current_node.next = list2
       
-    return head
+    return dummy_list.next
 
-
-
-  
 
 solution = Solution()
 
