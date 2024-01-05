@@ -1,21 +1,25 @@
 class Solution:
   def isPalindrome(self, s: str) -> bool:
-    start = 0
-    end = len(s) - 1
+    left = 0
+    right = len(s) - 1
 
-    while start < end:
-      if not s[start].isalnum():
-        start += 1
-      elif not s[end].isalnum():
-        end -= 1
+    while left < right:
+      if not self.is_alphanumeric(s[left]):
+        left += 1
+      elif not self.is_alphanumeric(s[right]):
+        right -= 1
       else:
-        if s[start].lower() == s[end].lower():
-          start += 1
-          end -= 1
+        if s[left].lower() == s[right].lower():
+          left += 1
+          right -= 1
         else:
           return False
     
     return True
+  
+  def is_alphanumeric(self, char):
+    return ord('a') <= ord(char.lower()) <= ord('z') or ord('0') <= ord(char) <= ord('9')
+
 
   
 solution = Solution()
