@@ -20,7 +20,6 @@ class Solution:
   def is_alphanumeric(self, char):
     return ord('a') <= ord(char.lower()) <= ord('z') or ord('0') <= ord(char) <= ord('9')
 
-
   
 solution = Solution()
 
