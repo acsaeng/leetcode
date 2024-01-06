@@ -1,18 +1,16 @@
 class Solution:
   def climbStairs(self, n: int) -> int:
-    num_ways = [0, 1, 2]
+    prev_case = 1  # Number of ways with one step
+    current_case = 2  # Number of ways with two steps
 
-    if n > 2:
-      for i in range(3, n + 1):
-        num_ways.append(num_ways[i - 1] + num_ways[i - 2])
+    for _ in range(n - 2):
+      prev_case, current_case = current_case, prev_case + current_case
       
-    return num_ways[n]
+    return current_case if n > 1 else prev_case
 
-
-solution = Solution()
 
 print('Case 1: n = 2')
-print('Answer:', solution.climbStairs(2))
+print('Answer:', Solution().climbStairs(2))
 
 print('\nCase 2: nums = 3')
-print('Answer:', solution.climbStairs(3))
+print('Answer:', Solution().climbStairs(3))
