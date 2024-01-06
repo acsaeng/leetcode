@@ -49,3 +49,11 @@ def binary_tree_to_list(root):
   return binary_tree_list
 
 
+def get_node_from_value(root, value):
+  if not root:
+    return
+  elif root.val == value:
+    return root
+  else:
+    return get_node_from_value(root.left, value) or get_node_from_value(root.right, value)
+
