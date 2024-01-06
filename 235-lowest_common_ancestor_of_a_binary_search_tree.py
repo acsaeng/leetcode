@@ -2,14 +2,14 @@ from utils.binary_tree import binary_tree_to_list, get_node_from_value, list_to_
 
 class Solution:
   def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-    if not root:
-      return
-    elif root.val > p.val and root.val > q.val:
-      return self.lowestCommonAncestor(root.left, p, q)
-    elif root.val < p.val and root.val < q.val:
-      return self.lowestCommonAncestor(root.right, p, q)
-    else:
-      return root
+    while root:
+      if root.val > p.val and root.val > q.val:
+        root = root.left
+      elif root.val < p.val and root.val < q.val:
+        root = root.right
+      else:
+        return root
+
 
 print('Case 1: root = [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5], p = 2, q = 8')
 tree = list_to_binary_tree([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5])
