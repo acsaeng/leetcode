@@ -5,23 +5,24 @@ class ListNode:
     self.next = next
 
 
-def create_linked_list(array):
-  if array:
-    cursor = first_node = ListNode(array[0], next=None)
+def list_to_linked_list(array):
+  if not array:
+    return None
+  
+  dummy = current = ListNode()
 
-    for i in range(1, len(array)):
-      cursor.next = ListNode(array[i], next=cursor if i != len(array) - 1 else None)
-      cursor = cursor.next
+  for num in array:
+    current.next = ListNode(num)
+    current = current.next
 
-    return first_node
+  return dummy.next
 
 
-def print_linked_list(head):
-  cursor = head
+def linked_list_to_list(head):
   linked_list_vals = []
 
-  while cursor:
-    linked_list_vals.append(cursor.val)
-    cursor = cursor.next
+  while head:
+    linked_list_vals.append(head.val)
+    head = head.next
 
   return linked_list_vals

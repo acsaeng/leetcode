@@ -1,5 +1,5 @@
 from typing import Optional
-from utils.linked_list import ListNode, create_linked_list, print_linked_list
+from utils.linked_list import linked_list_to_list, list_to_linked_list, ListNode
 
 class Solution:
   def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
@@ -26,13 +26,13 @@ class Solution:
 solution = Solution()
 
 print('Case 1: list1 = [1, 2, 4], list2 = [1, 3, 4]')
-ans = solution.mergeTwoLists(create_linked_list([1, 2, 4]), (create_linked_list([1, 3, 4])))
-print('Answer:', print_linked_list(ans))
+ans = solution.mergeTwoLists(list_to_linked_list([1, 2, 4]), (list_to_linked_list([1, 3, 4])))
+print('Answer:', linked_list_to_list(ans))
 
 print('\nCase 2: list1 = [], list2 = []')
-ans = solution.mergeTwoLists(create_linked_list([]), create_linked_list([]))
-print('Answer:', print_linked_list(ans))
+ans = solution.mergeTwoLists(list_to_linked_list([]), list_to_linked_list([]))
+print('Answer:', linked_list_to_list(ans))
 
 print('\nCase 3: list1 = [], list2 = [0]')
-ans = solution.mergeTwoLists(create_linked_list([]), create_linked_list([0]))
-print('Answer:', print_linked_list(ans))
+ans = solution.mergeTwoLists(list_to_linked_list([]), list_to_linked_list([0]))
+print('Answer:', linked_list_to_list(ans))
