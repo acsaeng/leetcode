@@ -13,14 +13,14 @@ class Solution:
     return root
 
 
-print('Case 1: head = [4, 2, 7, 1, 3, 6, 9]')
+print('Case 1: root = [4, 2, 7, 1, 3, 6, 9]')
 ans = Solution().invertTree(list_to_binary_tree([4, 2, 7, 1, 3, 6, 9]))
 print('Answer:', binary_tree_to_list(ans))
 
-print('\nCase 2: head = [2, 1, 3]')
+print('\nCase 2: root = [2, 1, 3]')
 ans = Solution().invertTree(list_to_binary_tree([2, 1, 3]))
 print('Answer:', binary_tree_to_list(ans))
 
-print('\nCase 3: head = []')
+print('\nCase 3: root = []')
 ans = Solution().invertTree(list_to_binary_tree([]))
 print('Answer:', binary_tree_to_list(ans))
