@@ -1,32 +1,25 @@
 class Solution:
   def lengthOfLongestSubstring(self, s: str) -> int:
-    current_substring = ''
-    longest_substring = ''
-    s_set = set()
-
-    for char in s:
-      if char in s_set:
-        if len(current_substring) > len(longest_substring):
-          longest_substring = current_substring
-        s_set = s_set.difference(list(current_substring.partition(char)[0]))
-        current_substring = current_substring.partition(char)[2] + char
-      else:
-        current_substring += char
-        s_set.add(char)
-
-    if len(current_substring) > len(longest_substring):
-      longest_substring = current_substring
+    char_set = set()
+    left = 0
+    longest_substring = 0
   
-    return len(longest_substring)
+    for right in range(len(s)):
+      while s[right] in char_set:
+        char_set.remove(s[left])
+        left += 1
+      
+      char_set.add(s[right])
+      longest_substring = max(longest_substring, right - left + 1)
+    
+    return longest_substring
       
 
-solution = Solution()
-
 print('Case 1: s = "abcabcbb"')
-print('Answer:', solution.lengthOfLongestSubstring('abcabcbb'))
+print('Answer:', Solution().lengthOfLongestSubstring('abcabcbb'))
 
 print('\nCase 2: s = "bbbbb"')
-print('Answer:', solution.lengthOfLongestSubstring('bbbbb'))
+print('Answer:', Solution().lengthOfLongestSubstring('bbbbb'))
 
 print('\nCase 3: s = "pwwkew"')
-print('Answer:', solution.lengthOfLongestSubstring('pwwkew'))
+print('Answer:', Solution().lengthOfLongestSubstring('pwwkew'))
