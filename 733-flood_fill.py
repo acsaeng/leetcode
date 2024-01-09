@@ -1,24 +1,20 @@
 class Solution:
   def floodFill(self, image: list[list[int]], sr: int, sc: int, color: int) -> list[list[int]]:
-    queue = [[sr, sc]]
-    width, height = len(image[0]), len(image)
+    if image[sr][sc] != color:
+      r, c = len(image[0]), len(image)
+      old_color = image[sr][sc]
+      image[sr][sc] = color
 
-    while queue:
-      x, y = queue.pop(0)
-
-      if 0 <= y - 1 < width and image[x][y - 1] == image[x][y] and image[x][y - 1] != color:
-        queue.append([x, y - 1])
-      if 0 <= y + 1 < width and image[x][y + 1] == image[x][y] and image[x][y + 1] != color:
-        queue.append([x, y + 1])
-      if 0 <= x - 1 < height and image[x - 1][y] == image[x][y] and image[x - 1][y] != color:
-        queue.append([x - 1, y])
-      if 0 <= x + 1 < height and image[x + 1][y] == image[x][y] and image[x + 1][y] != color:
-        queue.append([x + 1, y])
-      
-      image[x][y] = color
+      if 0 <= sr - 1 < c and image[sr - 1][sc] == old_color:
+        self.floodFill(image, sr - 1, sc, color)
+      if 0 <= sr + 1 < c and image[sr + 1][sc] == old_color:
+        self.floodFill(image, sr + 1, sc, color)
+      if 0 <= sc - 1 < r and image[sr][sc - 1] == old_color:
+        self.floodFill(image, sr, sc - 1, color)
+      if 0 <= sc + 1 < r and image[sr][sc + 1] == old_color:
+        self.floodFill(image, sr, sc + 1, color)
     
     return image
-
 
 print('image = [[1, 1, 1], [1, 1, 0], [1, 0, 1]], sr = 1, sc = 1, color = 2')
 print('Answer:', Solution().floodFill([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2))
