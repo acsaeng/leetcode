@@ -1,5 +1,5 @@
 from typing import Optional
-from utils.binary_tree import binary_tree_to_list, list_to_binary_tree, TreeNode
+from utils.binary_tree import list_to_binary_tree, TreeNode
 
 class Solution:
   def isBalanced(self, root: Optional[TreeNode]) -> bool:
