@@ -7,18 +7,15 @@ class Solution:
   def firstBadVersion(self, n: int) -> int:
     left, right = 1, n
 
-    if isBadVersion(left) == isBadVersion(right):
-      return left
-
-    while right - left > 1:
+    while left < right:
       mid = left + ((right - left) // 2)
 
-      if isBadVersion(left) != isBadVersion(mid):
+      if isBadVersion(mid):
         right = mid
       else:
-        left = mid
+        left = mid + 1
     
-    return left if isBadVersion(left) else right
+    return left
       
 
 print('Case 1: n = 5, bad = 4')
