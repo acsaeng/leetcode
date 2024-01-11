@@ -2,15 +2,15 @@ from typing import Optional
 from utils.linked_list import list_to_cycled_linked_list, ListNode
 
 class Solution:
-  def hasCycle(self, head: Optional[ListNode]) -> bool:
-    nodes = []
+  def hasCycle(self, head: Optional[ListNode]) -> bool:    
+    tortoise = hare = head
+
+    while hare and hare.next:
+      tortoise = tortoise.next
+      hare = hare.next.next
     
-    while head:
-      if head in nodes and len(nodes) > 1:
+      if tortoise == hare:
         return True
-      
-      nodes.append(head)
-      head = head.next
     
     return False
 
