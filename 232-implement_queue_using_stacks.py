@@ -1,25 +1,24 @@
 class MyQueue:
   def __init__(self):
-    self.main = []
-    self.spare = []
+    self.in_stack = []
+    self.out_stack = []
       
   def push(self, x: int) -> None:
-    while self.main:
-      self.spare.append(self.main.pop())
-
-    self.main.append(x)
-
-    while self.spare:
-      self.main.append(self.spare.pop())
+    self.in_stack.append(x)
 
   def pop(self) -> int:
-    return self.main.pop()
+    self.peek()
+    return self.out_stack.pop()
 
   def peek(self) -> int:
-    return self.main[-1]
+    if not self.out_stack:
+      while self.in_stack:
+        self.out_stack.append(self.in_stack.pop())
+    
+    return self.out_stack[-1]
 
   def empty(self) -> bool:
-    return not self.main
+    return not self.in_stack and not self.out_stack
 
 
 print('Case 1: ["MyQueue", "push", "push", "peek", "pop", "empty"], [[], [1], [2], [], [], []]')
