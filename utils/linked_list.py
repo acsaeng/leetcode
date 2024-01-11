@@ -26,3 +26,21 @@ def linked_list_to_list(head):
     head = head.next
 
   return linked_list_vals
+
+
+def list_to_cycled_linked_list(array, pos):
+  if not array:
+    return None
+  
+  dummy = current = ListNode()
+  cycled_node = None
+
+  for i in range(len(array)):
+    current.next = ListNode(array[i])
+    current = current.next
+
+    if i == pos:
+      cycled_node = current
+  
+  current.next = cycled_node
+  return dummy.next
