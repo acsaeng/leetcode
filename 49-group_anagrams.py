@@ -3,11 +3,17 @@ class Solution:
     anagram_groups = {}
 
     for str in strs:
-      sorted_str = ''.join(sorted(str))
-      if sorted_str in anagram_groups:
-        anagram_groups[sorted_str].append(str)
+      char_count = [0] * 26  # Represents occurances of a-z characters
+
+      for char in str:
+        char_count[ord(char) - ord('a')] += 1
+      
+      key = tuple(char_count)
+
+      if key in anagram_groups:
+        anagram_groups[key].append(str)
       else:
-        anagram_groups[sorted_str] = [str]
+        anagram_groups[key] = [str]
     
     return anagram_groups.values()
 
