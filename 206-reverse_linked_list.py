@@ -15,16 +15,14 @@ class Solution:
     return previous_node
 
 
-solution = Solution()
-
 print('Case 1: head = [1, 2, 3, 4, 5]')
-ans = solution.reverseList(list_to_linked_list([1, 2, 3, 4, 5]))
+ans = Solution().reverseList(list_to_linked_list([1, 2, 3, 4, 5]))
 print('Answer:', linked_list_to_list(ans))
 
 print('\nCase 2: head = [1, 2]')
-ans = solution.reverseList(list_to_linked_list([1, 2]))
+ans = Solution().reverseList(list_to_linked_list([1, 2]))
 print('Answer:', linked_list_to_list(ans))
 
 print('\nCase 3: head = []')
-ans = solution.reverseList(list_to_linked_list([]))
+ans = Solution().reverseList(list_to_linked_list([]))
 print('Answer:', linked_list_to_list(ans))
