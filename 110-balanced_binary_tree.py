@@ -2,18 +2,18 @@ from typing import Optional
 from utils.binary_tree import list_to_binary_tree, TreeNode
 
 class Solution:
-  def isBalanced(self, root: Optional[TreeNode]) -> bool:
-    return self.check_balanced_tree(root)[0]
+  def isBalanced(self, root: Optional[TreeNode]) -> bool:  
+    def dfs(root):
+      if not root:
+        return [True, 0]
+
+      left = dfs(root.left)
+      right = dfs(root.right)
+      is_balanced = left[0] and right[0] and abs(left[1] - right[1]) <= 1
+
+      return [is_balanced, max(left[1], right[1]) + 1]
   
-  def check_balanced_tree(self, root):
-    if not root:
-      return [True, 0]
-
-    left = self.check_balanced_tree(root.left)
-    right = self.check_balanced_tree(root.right)
-    is_balanced = left[0] and right[0] and abs(left[1] - right[1]) <= 1
-
-    return [is_balanced, max(left[1], right[1]) + 1]
+    return dfs(root)[0]
   
 
 print('Case 1: root = [3, 9, 20, null, null, 15, 7]')
