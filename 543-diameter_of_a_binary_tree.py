@@ -3,16 +3,21 @@ from utils.binary_tree import list_to_binary_tree, TreeNode
 
 class Solution:
   def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-    return self.calculate_diameter(root)[1]
-  
-  def calculate_diameter(self, root):
-    if not root:
-      return [0, 0]
-    else:
-      left = self.calculate_diameter(root.left)
-      right = self.calculate_diameter(root.right)
+    def dfs(root):
+      nonlocal max_diameter
+      
+      if not root:
+        return 0
+      else:
+        left_len = dfs(root.left)
+        right_len = dfs(root.right)
+        max_diameter = max(max_diameter, left_len + right_len)
 
-      return [max(left[0], right[0]) + 1, max(left[0] + right[0], left[1], right[1])]
+        return max(left_len, right_len) + 1
+    
+    max_diameter = 0
+    dfs(root)
+    return max_diameter
 
 
 print('Case 1: root = [1, 2, 3, 4, 5]')
