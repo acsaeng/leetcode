@@ -15,10 +15,8 @@ class Solution:
     return right - left + 1
 
 
-solution = Solution()
-
 print('Case 1: s = "ABAB", k = 2')
-print('Answer:', solution.characterReplacement('ABAB', 2))
+print('Answer:', Solution().characterReplacement('ABAB', 2))
 
 print('\nCase 2: s = "AABABBA", k = 1')
-print('Answer:', solution.characterReplacement('AABABBA', 1))
+print('Answer:', Solution().characterReplacement('AABABBA', 1))
