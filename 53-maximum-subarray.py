@@ -13,7 +13,6 @@ class Solution:
     return global_max_sum
 
 
-
 print('Case 1: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]')
 print('Answer:', Solution().maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
 
