@@ -5,14 +5,13 @@ class Solution:
 
     for num in nums:
       local_max_sum += num
-    
-      if local_max_sum > global_max_sum:
-        global_max_sum = local_max_sum
+      global_max_sum = max(global_max_sum, local_max_sum)
 
       if local_max_sum < 0:
         local_max_sum = 0
     
     return global_max_sum
+
 
 
 print('Case 1: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]')
