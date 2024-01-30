@@ -3,25 +3,19 @@ from utils.linked_list import linked_list_to_list, list_to_linked_list, ListNode
 
 class Solution:
   def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-    if not head.next:
-      return None
+    dummy = left = ListNode(None, head)
+    right = head
 
-    nth = end = head
-
-    while end.next:
-      end = end.next
-
-      if n > 0:
-        n -= 1
-      else:
-        nth = nth.next
+    while n > 0 and right:
+      right = right.next
+      n -= 1
     
-    if n:
-      head = head.next
-    else:
-      nth.next = nth.next.next
-
-    return head
+    while right:
+      left = left.next
+      right = right.next
+    
+    left.next = left.next.next
+    return dummy.next
 
 
 print('Case 1: head = [1, 2, 3, 4, 5], , n = 2')
