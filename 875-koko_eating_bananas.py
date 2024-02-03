@@ -5,16 +5,16 @@ class Solution:
     left, right = 1, max(piles)
 
     while left < right:
-      middle = left + ((right - left) // 2) 
+      k = left + ((right - left) // 2) 
       hours = 0
 
       for pile in piles:
-        hours += math.ceil(pile / middle)
+        hours += math.ceil(pile / k)
       
       if hours <= h:
-        right = middle
+        right = k
       else:
-        left = middle + 1
+        left = k + 1
       
     return left
 
