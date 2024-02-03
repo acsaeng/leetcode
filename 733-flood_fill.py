@@ -16,7 +16,7 @@ class Solution:
     
     return image
 
-print('image = [[1, 1, 1], [1, 1, 0], [1, 0, 1]], sr = 1, sc = 1, color = 2')
+print('Case 1: image = [[1, 1, 1], [1, 1, 0], [1, 0, 1]], sr = 1, sc = 1, color = 2')
 print('Answer:', Solution().floodFill([[1, 1, 1], [1, 1, 0], [1, 0, 1]], 1, 1, 2))
 
 print('\nCase 2: image = [[0, 0, 0],[0, 0, 0]], sr = 0, sc = 0, color = 0')
