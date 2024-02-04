@@ -2,7 +2,7 @@ class Solution:
   def findMin(self, nums: list[int]) -> int:
     left, right = 0, len(nums) - 1
 
-    while left < right:
+    while nums[left] > nums[right]:
       middle = left + ((right - left) // 2)
 
       if nums[middle] > nums[right]:
