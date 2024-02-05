@@ -2,22 +2,22 @@ from typing import Optional
 from utils.binary_tree import list_to_binary_tree, TreeNode
 
 class Solution:
-  def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-    def dfs(root):
-      nonlocal max_diameter
-      
-      if not root:
-        return 0
-      else:
-        left_len = dfs(root.left)
-        right_len = dfs(root.right)
-        max_diameter = max(max_diameter, left_len + right_len)
+  def __init__(self):
+    self.max_diameter = 0
 
-        return max(left_len, right_len) + 1
-    
-    max_diameter = 0
-    dfs(root)
-    return max_diameter
+  def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+    self.dfs(root)
+    return self.max_diameter
+
+  def dfs(self, root):
+    if not root:
+      return 0
+    else:
+      left_len = self.dfs(root.left)
+      right_len = self.dfs(root.right)
+      self.max_diameter = max(self.max_diameter, left_len + right_len)
+
+      return max(left_len, right_len) + 1
 
 
 print('Case 1: root = [1, 2, 3, 4, 5]')
