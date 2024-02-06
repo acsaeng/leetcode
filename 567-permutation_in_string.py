@@ -30,6 +30,3 @@ print('Answer:', Solution().checkInclusion('ab', 'eidbaooo'))
 
 print('\nCase 2: s1 = "ab", s2 = "eidboaoo"')
 print('Answer:', Solution().checkInclusion('ab', 'eidboaoo'))
-
-print('\nCase:')
-print('Answer:', Solution().checkInclusion('adc', 'dcda'))
