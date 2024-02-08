@@ -1,10 +1,10 @@
 class Solution:
   def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
-    stack = []
     nums_days_until_warmer_temp = [0] * len(temperatures)
+    stack = []
 
-    for current_day in range(len(temperatures)):
-      while stack and temperatures[stack[-1]] < temperatures[current_day]:
+    for current_day, current_temp in enumerate(temperatures):
+      while stack and temperatures[stack[-1]] < current_temp:
         past_day = stack.pop()
         nums_days_until_warmer_temp[past_day] = current_day - past_day
       
