@@ -15,14 +15,14 @@ def list_to_binary_tree(array):
 
   while array and queue:
     current_node = queue.pop(0)
-    left = array.pop(0) if array else None
-    right = array.pop(0) if array else None
 
-    if left:
+    if array:
+      left = array.pop(0)
       current_node.left = TreeNode(left)
       queue.append(current_node.left)
 
-    if right:
+    if array:
+      right = array.pop(0) if array else None
       current_node.right = TreeNode(right)
       queue.append(current_node.right)
 
