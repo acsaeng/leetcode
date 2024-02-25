@@ -18,13 +18,17 @@ def list_to_binary_tree(array):
 
     if array:
       left = array.pop(0)
-      current_node.left = TreeNode(left)
-      queue.append(current_node.left)
+
+      if left:
+        current_node.left = TreeNode(left)
+        queue.append(current_node.left)
 
     if array:
-      right = array.pop(0) if array else None
-      current_node.right = TreeNode(right)
-      queue.append(current_node.right)
+      right = array.pop(0)
+
+      if right:
+        current_node.right = TreeNode(right)
+        queue.append(current_node.right)
 
   return root
 
