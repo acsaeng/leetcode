@@ -3,26 +3,22 @@ from utils.binary_tree import list_to_binary_tree, TreeNode
 
 class Solution:
   def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:
-    if not root:
-      return []
-
     level_ordered_nodes = []
-    parent_stack = [root]
-    children_stack = []
+    queue = [root]
     
-    while parent_stack:
+    while queue:
+      num_nodes_in_level = len(queue)
       level = []
 
-      while parent_stack:
-        node = parent_stack.pop(0)
-        level.append(node.val)
-    
-        if node.left: children_stack.append(node.left)
-        if node.right: children_stack.append(node.right)
+      for _ in range(num_nodes_in_level):
+        node = queue.pop(0)
+
+        if node:
+          level.append(node.val)
+          queue.append(node.left)
+          queue.append(node.right)
       
-      level_ordered_nodes.append(level)
-      parent_stack = children_stack
-      children_stack = []
+      if level: level_ordered_nodes.append(level)
     
     return level_ordered_nodes
 
