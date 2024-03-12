@@ -3,29 +3,25 @@ from utils.linked_list import linked_list_to_list, list_to_linked_list, ListNode
 
 class Solution:
   def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-    cursor1, cursor2 = l1, l2
-    result = result_cursor = ListNode()
+    result = cursor = ListNode()
     carry = 0
 
-    while cursor1 or cursor2:
-      operand1 = cursor1.val if cursor1 else 0
-      operand2 = cursor2.val if cursor2 else 0
+    while l1 or l2:
+      operand1 = l1.val if l1 else 0
+      operand2 = l2.val if l2 else 0
+
       sum = operand1 + operand2 + carry
+      carry = sum // 10
+      sum %= 10
+      
+      cursor.next = ListNode(sum)
 
-      if sum >= 10:
-        sum -= 10
-        carry = 1
-      else:
-        carry = 0
-
-      result_cursor.next = ListNode(sum)
-
-      if cursor1: cursor1 = cursor1.next
-      if cursor2: cursor2 = cursor2.next
-      result_cursor = result_cursor.next
+      if l1: l1 = l1.next
+      if l2: l2 = l2.next
+      cursor = cursor.next
     
     if carry: 
-      result_cursor.next = ListNode(carry)
+      cursor.next = ListNode(carry)
 
     return result.next
 
