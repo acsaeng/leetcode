@@ -1,19 +1,24 @@
+import collections
+
 class Solution:
   def isValidSudoku(self, board: list[list[str]]) -> bool:
-    num_map = {}
+    row_map = collections.defaultdict(set)
+    col_map = collections.defaultdict(set)
+    square_map = collections.defaultdict(set)
 
-    for i, row in enumerate(board):
-      for j, num in enumerate(row):
-        if num != '.':
-          if num in num_map:
-            for coords in num_map[num]:
-              x, y = coords[0], coords[1]
-              if x == i or y == j or (x // 3 == i // 3 and y // 3 == j // 3):
-                return False
-            
-            num_map[num].append([i, j])
-          else:
-            num_map[num] = [[i, j]]
+    for x in range(9):
+      for y in range(9):
+        cell_val = board[x][y]
+
+        if cell_val == '.':
+          continue
+
+        if cell_val in row_map[x] or cell_val in col_map[y] or cell_val in square_map[(x // 3, y // 3)]:
+          return False
+        
+        row_map[x].add(cell_val)
+        col_map[y].add(cell_val)
+        square_map[(x // 3, y // 3)].add((cell_val))
 
     return True
 
