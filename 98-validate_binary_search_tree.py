@@ -8,7 +8,7 @@ class Solution:
   def dfs(self, node, val_range):
     if not node:
       return True
-    elif not (val_range[0] < node.val < val_range[1]):
+    elif not val_range[0] < node.val < val_range[1]:
       return False
     else:
       return self.dfs(node.left, [val_range[0], node.val]) and self.dfs(node.right, [node.val, val_range[1]])
