@@ -8,10 +8,10 @@ class Solution:
   def dfs(self, node, val_range):
     if not node:
       return True
-    elif (node.left and node.left.val >= node.val) or (node.right and node.right.val <= node.val) or not (val_range[0] < node.val < val_range[1]):
+    elif not (val_range[0] < node.val < val_range[1]):
       return False
     else:
-      return self.dfs(node.left, [min(node.val, val_range[0]), min(node.val, val_range[1])]) and self.dfs(node.right, [max(node.val, val_range[0]), max(node.val, val_range[1])])
+      return self.dfs(node.left, [val_range[0], node.val]) and self.dfs(node.right, [node.val, val_range[1]])
   
 
 print('Case 1: root = [2, 1, 3]')
