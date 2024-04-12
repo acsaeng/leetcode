@@ -34,21 +34,22 @@ def list_to_binary_tree(array):
 
 
 def binary_tree_to_list(root):
-  if root is None:
+  if not root:
     return []
 
   binary_tree_list = []
   queue = [root]
  
   while queue:
-    binary_tree_list.append(queue[0].val)
     node = queue.pop(0)
+    binary_tree_list.append(node.val if node else None)
 
-    if node.left:
+    if node:
       queue.append(node.left)
-
-    if node.right:
       queue.append(node.right)
+  
+  while not binary_tree_list[-1]:
+    binary_tree_list.pop()
 
   return binary_tree_list
 
