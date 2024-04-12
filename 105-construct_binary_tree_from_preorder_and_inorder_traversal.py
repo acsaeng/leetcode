@@ -7,12 +7,9 @@ class Solution:
       return None
     
     parent = TreeNode(preorder[0])
-    partition_index = 0
+    partition_index = inorder.index(preorder[0])
 
-    while inorder[partition_index] != preorder[0]:
-      partition_index += 1
-    
-    parent.left = self.buildTree(preorder[1:partition_index + 1], inorder[0:partition_index])
+    parent.left = self.buildTree(preorder[1:partition_index + 1], inorder[:partition_index])
     parent.right = self.buildTree(preorder[partition_index + 1:], inorder[partition_index + 1:])
 
     return parent
